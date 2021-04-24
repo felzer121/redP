@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    @apply tracking-tight;
+}
+.btn {
+    @apply px-4 py-2 border border-transparent font-medium text-base rounded-md shadow;
+    @apply transition duration-150 ease-in-out;
+}
+
+.btn:focus {
+    @apply outline-none shadow-outline-blue;
+}
+
+.btn-white {
+    @apply text-gray-800 bg-white;
+}
+
+.btn-white:hover {
+    @apply text-gray-500;
+}
+
+.btn-white:active {
+    @apply bg-gray-50 text-gray-700;
+}
+
+.btn-black {
+    @apply bg-gray-800 text-white;
+}
+
+.btn-black:hover {
+    @apply bg-gray-700;
+}
+
+.link {
+    @apply font-medium text-blue-700 transition duration-150 ease-in-out
+}
+
+.link:hover {
+    @apply text-blue-500;
+}
+
+.link:focus {
+    @apply outline-none text-gray-400
+}
+
+@tailwind utilities;
