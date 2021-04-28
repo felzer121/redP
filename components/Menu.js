@@ -59,31 +59,31 @@ const Menu = () => {
           <div className="hidden md:block header__link">
             <a
               href={`/${locale}#brand`}
-              className="ml-10 hover:text-white focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
+              className="ml-10 hover:text-gray-400 focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
             >
               {t('generic.brand')}
             </a>
             <a
                 href={`/${locale}#about`}
-                className="ml-10 hover:text-white focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
+                className="ml-10 hover:text-gray-400 focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
             >
               {t('generic.about')}
             </a>
             <a
               href={`/${locale}#reviews`}
-              className="ml-10 hover:text-white focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
+              className="ml-10 hover:text-gray-400 focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
             >
               {t('generic.reviews')}
             </a>
             <a
-                href={`/${locale}#fake`}
-                className="ml-10 hover:text-white focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
+                href={`/${locale}#events`}
+                className="ml-10 hover:text-gray-400 focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
             >
               мероприятия
             </a>
             <a
               href={`/${locale}#contact`}
-              className="ml-10 hover:text-white focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
+              className="ml-10 focus:outline-none focus:text-gray-400 transition duration-150 ease-in-out"
             >
               {t('generic.contactUs')}
             </a>
@@ -129,7 +129,7 @@ const Menu = () => {
         <div
           className={`${
             isMenuOpen ? "" : "hidden"
-          } absolute top-0 inset-x-0 p-2 transition transform origin-top-right`}
+          } absolute top-0 inset-x-0 p-2 z-10 transition transform origin-top-right`}
         >
           <div className="rounded-lg shadow-md">
             <div className="rounded-lg bg-gray-700 shadow-xs overflow-hidden">
@@ -138,7 +138,7 @@ const Menu = () => {
                   <a href="/">
                     <img
                       className=""
-                      src="/logobold.svg"
+                      src="/logobold.png"
                       alt="Red Affiliates Logo"
                       width="250"
                       height="73"
@@ -169,22 +169,28 @@ const Menu = () => {
               </div>
               <div className="px-2 pt-2 pb-3 header__link">
                 <a
-                  href={`/${locale}#commission`}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                >
-                  {t('generic.comission')}
-                </a>
-                <a
                   href={`/${locale}#brand`}
                   className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                 >
                   {t('generic.brand')}
                 </a>
                 <a
-                  href={`/${locale}#faq`}
-                  className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                    href={`/${locale}#about`}
+                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
                 >
-                  {t('generic.faq')}
+                  {t('generic.about')}
+                </a>
+                <a
+                    href={`/${locale}#reviews`}
+                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                >
+                  {t('generic.reviews')}
+                </a>
+                <a
+                    href={`/${locale}#events`}
+                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+                >
+                  мероприятия
                 </a>
                 <a
                   href={`/${locale}#contact`}
