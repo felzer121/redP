@@ -8,34 +8,42 @@ import Footer from "../components/Footer";
 import SignUpButton from "../components/SignUpButton";
 import Faq from "../components/Faq";
 import About from "../components/About";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 4,
-    slidesToSlide: 3
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-    slidesToSlide: 3
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
-};
+import Slider from "react-slick";
 
 export default function Home() {
   const { t } = useI18n();
-
-  return (
+  const settings1 = {
+    className: "center",
+    centerMode: true,
+    centerPadding: "150px",
+    infinite: true,
+    slidesToScroll: 2,
+    speed: 500
+  };
+  const settings = {
+    className: "actives",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "22%",
+    slidesToShow: 1,
+    speed: 500,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          centerPadding: "10%",
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          centerPadding: "7%",
+        }
+      }
+    ]
+  };
+    return (
     <>
       <NextSeo
         title="Red Affiliates | Best Online Casino Affiliate Program"
@@ -47,12 +55,17 @@ export default function Home() {
       <div className="info">
         <div className="info__container">
           <div className="info__content">
-            <h2>Зарабатывайте <span className="info__weight">больше</span> <br /> уже <span className="info__red">сегодня</span></h2>
-            <p className="info__txt">
-              <span className="font-bold">RED AFFILIATES</span> партнерская программа для онлайн Гемблинга.
-              Мы имеем большой опыт работы на рынке азартных игр. Мы гарантируем надежность и стабильност,  как в предоставлении услуг нашим Игрокам,
-              так и в работе с нашими Партнерами.
-            </p>
+            <h2>Давайте зарабатывать <br />вместе 🤑</h2>
+            {/*<h2>Зарабатывайте <span className="info__weight">больше</span> <br /> уже <span className="info__red">сегодня</span></h2>*/}
+            <div className="info__box">
+              <p className="info__txt">
+                <span className="font-bold">RED Affiliates</span> - Это открытая команда, прислушивающаяся к потребностям своих партнеров. Ваш успех — наша цель.
+              </p>
+              <p className="info__txt">
+                Мы делаем все, чтобы конвертить ваш трафик. Система лояльности в казино позволяет отлично удерживать игроков и иметь высокий LTV.
+              </p>
+            </div>
+
             <SignUpButton className="content__button">
               {t('generic.signup')}
             </SignUpButton>
@@ -66,11 +79,12 @@ export default function Home() {
       <div className="brands" id="brand">
         <div className="brands__container">
           <h2 className="brands__title">Наши бренды</h2>
+          <img src="/logoCasino.png" className="brands__logoMobil" alt="" />
           <div className="brands__content">
             <img src="/casino.png" className="brands__img" alt=""/>
             <div className="brands__info">
               <div className="brands__infoTitle">
-                <img src="/logoCasino.png" alt=""/>
+                <img src="/logoCasino.png" className="brands__logo" alt=""/>
                 <div className="button__info">
                   <a
                       href="https://redping.win/"
@@ -89,13 +103,22 @@ export default function Home() {
                   к несметным богатствам. Доверьтесь хитрой птице, ведь он непременно оправдает ваши ожидания.
                 </p>
                 <h4 className="brands__txtTitle">Процент от прибыли</h4>
-                <p className="brands__txt">Процент вознаграждения Партнера рассчитывается исходя из количества игроков за предыдущий месяц</p>
+                <div className="tab">
+                  <input className="absolute opacity-0" id="tab-multi-one" type="checkbox" name="tabs" />
+                  <label htmlFor="tab-multi-one" className="brands__txt arr">Процент вознаграждения Партнера рассчитывается исходя из количества игроков за предыдущий месяц</label>
+                  <div className="tab-content overflow-hidden">
+                    <p className="brands__txt">FTD 0 = 25% от NGR</p>
+                    <p className="brands__txt">FTD 1-5 = 30% от NGR</p>
+                    <p className="brands__txt">FTD 6-10 = 35% от NGR</p>
+                    <p className="brands__txt">FTD 11-20 = 40% от NGR</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div className="brands__numbers">
             <div className="brands__numbersBox">
-              <span className="brands__span">200+</span>
+              <span className="brands__span">4500+</span>
               <p className="brands__numbersTxt">Игр</p>
             </div>
             <div className="brands__numbersBox">
@@ -103,12 +126,12 @@ export default function Home() {
               <p className="brands__numbersTxt">Game Rove</p>
             </div>
             <div className="brands__numbersBox">
-              <span className="brands__span">10+</span>
+              <span className="brands__span">15+</span>
               <p className="brands__numbersTxt">Валют</p>
             </div>
             <div className="brands__numbersBox">
-              <span className="brands__span">10+</span>
-              <p className="brands__numbersTxt">Игр</p>
+              <span className="brands__span">12</span>
+              <p className="brands__numbersTxt">Языков</p>
             </div>
             <div className="brands__numbersBox">
               <span className="brands__span">24/7</span>
@@ -118,15 +141,31 @@ export default function Home() {
           <div className="brands__subInfo">
             <div className="brands__subInfoContainer">
               <h4 className="brands__subInfoTitle">Ссылка на сайт</h4>
-              <a href="#" className="brands__subInfoLink">www.redping.win.com</a>
+              <a href="#" className="brands__subInfoLink">www.redping.win</a>
             </div>
             <div className="brands__subInfoContainer">
               <h4 className="brands__subInfoTitle">Рынки</h4>
-              <img className="brands__flag" src="/flag.png" alt=""/>
+              <div className="brands__flag">
+                <img src="/free-icon-australia.svg" alt=""/>
+                <img src="/free-icon-canada.svg" alt=""/>
+                <img src="/free-icon-finland.svg" alt=""/>
+                <img src="/free-icon-denmark.svg" alt=""/>
+                <img src="/free-icon-norway.svg" alt=""/>
+                <img src="/free-icon-new-zealand.svg" alt=""/>
+                <img src="/free-icon-poland.svg" alt=""/>
+                <img src="/free-icon-portugal.svg" alt=""/>
+                <img src="/free-icon-bulgaria.svg" alt=""/>
+                <img src="/free-icon-romania.svg" alt=""/>
+                <img src="/free-icon-ukraine.svg" alt=""/>
+                <img src="/free-icon-czech-republic.svg" alt=""/>
+                <img src="/free-icon-turkey.svg" alt=""/>
+                <img src="/free-icon-greece.svg" alt=""/>
+                <img src="/free-icon-germany.svg" alt=""/>
+              </div>
             </div>
             <div className="brands__subInfoContainer">
               <h4 className="brands__subInfoTitle">Варианты оплаты</h4>
-              <span className="brands__subTxt">20</span>
+              <span className="brands__subTxt">20+</span>
             </div>
             <div className="brands__subInfoContainer">
               <h4 className="brands__subInfoTitle">Лицензия</h4>
@@ -181,9 +220,9 @@ export default function Home() {
             </div>
             <div className="brands__item">
               <img src="/ad-icon4.png" alt=""/>
-              <h5 className="brands__itemTitle">10 платежных<br /> систем</h5>
+              <h5 className="brands__itemTitle">Удобная система<br /> вывода</h5>
               <img src="/line-ad.png" alt=""/>
-              <p className="brands__itemTxt">Большой выбор платежных систем</p>
+              <p className="brands__itemTxt">Начисление средств в расчетный период без задержек</p>
             </div>
             <div className="brands__item">
               <img src="/ad-icon5.png" alt=""/>
@@ -216,51 +255,94 @@ export default function Home() {
       <div className="reviews" id="reviews" >
         <div className="reviews__container">
           <h2 className="brands__title">Отзывы наших клиентов</h2>
-          <Carousel responsive={responsive} infinite draggable={false} swipeable={false} className="reviews__carousel">
-            <div className="reviews__item fake">
-                {/* fake */}
-            </div>
-            <div className="reviews__item">
-              <div className="reviews__itemTitle">
-                <img src="/cas.png" alt=""/>
-                <p className="reviews__itemTitleTxt">Безопасное и лицензионное казино Orange</p>
+          <Slider {...settings1}>
+            <div className="reviews__content">
+              <div className="reviews__item">
+                <div className="reviews__itemTitle">
+                  <img src="/cas.png" alt=""/>
+                  <p className="reviews__itemTitleTxt">Безопасное и лицензионное казино Orange</p>
+                </div>
+                <p className="reviews__itemTxt">Наша компания впервые обратилась к фирме N около полугода назад. Результаты превзошли ожидания: прибыль за первый квартал составил +96%, и это в “мертвый сезон”, когда обычно у нас убыток. </p>
               </div>
-              <p className="reviews__itemTxt">Наша компания впервые обратилась к фирме N около полугода назад. Результаты превзошли ожидания: прибыль за первый квартал составил +96%, и это в “мертвый сезон”, когда обычно у нас убыток. </p>
-            </div>
-            <div className="reviews__item">
-              <div className="reviews__itemTitle">
-                <img src="/rus.png" alt=""/>
-                <p className="reviews__itemTitleTxt">Руслан , Россия</p>
+              <div className="reviews__item">
+                <div className="reviews__itemTitle">
+                  <img src="/rus.png" alt=""/>
+                  <p className="reviews__itemTitleTxt">Руслан , Россия</p>
+                </div>
+                <p className="reviews__itemTxt">С супругой копим на автомобиль. Представляю, какого будет её удивление, когда мой выигрыш однажды превысит стоимость авто.</p>
               </div>
-              <p className="reviews__itemTxt">С супругой копим на автомобиль. Представляю, какого будет её удивление, когда мой выигрыш однажды превысит стоимость авто.</p>
             </div>
-            <div className="reviews__item fake">
-              {/* fake */}
-            </div>
-            <div className="reviews__item">
-              <div className="reviews__itemTitle">
-                <img src="/cas.png" alt=""/>
-                <p className="reviews__itemTitleTxt">Безопасное и лицензионное казино Orange</p>
+            <div className="reviews__content">
+              <div className="reviews__item">
+                <div className="reviews__itemTitle">
+                  <img src="/cas.png" alt=""/>
+                  <p className="reviews__itemTitleTxt">Безопасное и лицензионное казино Orange</p>
+                </div>
+                <p className="reviews__itemTxt">Наша компания впервые обратилась к фирме N около полугода назад. Результаты превзошли ожидания: прибыль за первый квартал составил +96%, и это в “мертвый сезон”, когда обычно у нас убыток. </p>
               </div>
-              <p className="reviews__itemTxt">Наша компания впервые обратилась к фирме N около полугода назад. Результаты превзошли ожидания: прибыль за первый квартал составил +96%, и это в “мертвый сезон”, когда обычно у нас убыток. </p>
-            </div>
-            <div className="reviews__item">
-              <div className="reviews__itemTitle">
-                <img src="/rus.png" alt=""/>
-                <p className="reviews__itemTitleTxt">Руслан , Россия</p>
+              <div className="reviews__item">
+                <div className="reviews__itemTitle">
+                  <img src="/rus.png" alt=""/>
+                  <p className="reviews__itemTitleTxt">Руслан , Россия</p>
+                </div>
+                <p className="reviews__itemTxt">С супругой копим на автомобиль. Представляю, какого будет её удивление, когда мой выигрыш однажды превысит стоимость авто.</p>
               </div>
-              <p className="reviews__itemTxt">С супругой копим на автомобиль. Представляю, какого будет её удивление, когда мой выигрыш однажды превысит стоимость авто.</p>
             </div>
-          </Carousel>
+            <div className="reviews__content">
+              <div className="reviews__item">
+                <h3>2</h3>
+              </div>
+              <div className="reviews__item">
+                <h3>3</h3>
+              </div>
+            </div>
+          </Slider>
+        </div>
+      </div>
+      <div className="events" id="events">
+        <h2 className="brands__title">Мероприятия</h2>
+        <div className="events__container">
+          <Slider {...settings}>
+            <div className="events__item">
+              <div className="events__redAffiliates">
+
+              </div>
+            </div>
+            <div className="events__item">
+              <div className="events__redAffiliates2">
+
+              </div>
+            </div>
+            <div className="events__item">
+              <div className="events__redAffiliates3">
+
+              </div>
+            </div>
+            <div className="events__item">
+              <div className="events__redAffiliates">
+
+              </div>
+            </div>
+            <div className="events__item">
+              <div className="events__redAffiliates2">
+
+              </div>
+            </div>
+            <div className="events__item">
+              <div className="events__redAffiliates3">
+
+              </div>
+            </div>
+          </Slider>
         </div>
       </div>
       <div className="contact" id="contact" >
         <div className="contact__container">
-          <div>
+          <div className="contact__box">
             <h2 className="contact__title">Получи до <span className="info__weight">50%</span> <br /> от <span className="info__red">прибыли</span></h2>
             <div className="contact__buttons">
-              <button href="" className="contact__button"><img src="/skype.png" alt=""/> Добавить в skype</button>
-              <a href="" className="contact__button"><img src="/email.png" alt=""/> Отправить email</a>
+              <a href="https://join.skype.com/invite/nHA2fpQ48Dks" className="contact__button"><img src="/skype.png" alt=""/> Добавить в skype</a>
+              <a href="mailto:partners@red-affiliates.com" className="contact__button"><img src="/email.png" alt=""/> Отправить email</a>
             </div>
           </div>
           <img
@@ -276,12 +358,13 @@ export default function Home() {
               {t('generic.tnc')}
             </a>
             <div className="social__inf">
-              <a href="#"><img src="/telegram.png" alt=""/></a>
-              <a href="#"><img src="/inst.png" alt=""/></a>
+              <a href="https://tlgg.ru/redaffiliates"><img src="/telegram.png" alt=""/></a>
+              <a href="https://instagram.com/red_affiliates?igshid=gr44q0sykkz4"><img src="/inst.png" alt=""/></a>
             </div>
           </div>
         </div>
       </div>
+
       {/*<div className="relative bg-gray-900 sa">*/}
       {/*  <div className="relative pt-6 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">*/}
       {/*    <Menu />*/}
